@@ -23,13 +23,6 @@ public class Navigations {
         WebDriver driver = new ChromeDriver(cop);
     }
 
-    @AfterTest
-    public void quiteDriver(){
-        ChromeOptions cop = new ChromeOptions();
-        cop.addArguments("--remote-allow-origins=*");
-        WebDriver driver = new ChromeDriver(cop);
-        driver.close();
-    }
 
     @Test
     public void getCurrentURL(){
@@ -66,6 +59,7 @@ public class Navigations {
         driver.navigate().to(URL2);
         Assertions.assertEquals("Kodluyoruz | Ana sayfa","Kodluyoruz | Ana sayfa");
 
+
         //Back
         driver.navigate().back();
         Assertions.assertEquals(driver.getTitle(),"LCW.com: Trendler ve Yenilikçi Online Alışveriş Deneyimi Burada! | LCW");
@@ -77,6 +71,14 @@ public class Navigations {
         //Refresh
         driver.navigate().refresh();
         Assertions.assertEquals("Kodluyoruz | Ana sayfa","Kodluyoruz | Ana sayfa");
+    }
+
+    @AfterTest
+    public void quiteDriver(){
+        ChromeOptions cop = new ChromeOptions();
+        cop.addArguments("--remote-allow-origins=*");
+        WebDriver driver = new ChromeDriver(cop);
+        driver.close();
     }
 
 }

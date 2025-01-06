@@ -73,7 +73,7 @@ public class FindElements {
        continueButton.click();
 
        WebElement passwordTextBox = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='password']")));
-       passwordTextBox.sendKeys("Galata8559*");
+       passwordTextBox.sendKeys("xxxxxxx*");
 
    }
     @AfterAll

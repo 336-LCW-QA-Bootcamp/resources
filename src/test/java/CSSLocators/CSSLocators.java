@@ -18,6 +18,9 @@ import java.time.Duration;
 
 public class CSSLocators {
 
+    /**
+     * https://www.swtestacademy.com/css-selenium/
+     * */
     private WebDriver driver;
 
     final private String baseURL = "https://demoqa.com/automation-practice-form";

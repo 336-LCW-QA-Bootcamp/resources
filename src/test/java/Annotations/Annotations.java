@@ -22,6 +22,9 @@ public class Annotations {
     //Declare a test URL variable
     public String testURL = "https://www.patika.dev/";
 
+    /**
+     * BeforeSuite: It will run only once, before all tests in the suite are executed.
+     * */
     @BeforeSuite
     public void setup(){
 
@@ -31,6 +34,9 @@ public class Annotations {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         System.out.println("The setup process is completed...");
     }
+
+    /**BeforeTest: This will be executed before the first @Test annotated method. It can be executed multiple times before the test case.
+     **/
     @BeforeTest
     public void profileSetup(){
         ChromeOptions cop = new ChromeOptions();
@@ -42,11 +48,17 @@ public class Annotations {
         driver.manage().window().maximize();
         System.out.println("The profile setup process is completed...");
     }
+
+    /**BeforeClass: This will be executed before first @Test method execution. It will be executed one only time throughout the test case.
+     **/
     @BeforeClass
     public void goToURL(){
         driver.get(testURL);
         System.out.println("The URl setup process is completed...");
     }
+
+    /**BeforeMethod: This will be executed before every @test annotated method
+     * */
     @BeforeMethod
     public void checkLogin(){
         driver.get(testURL);
@@ -59,11 +71,16 @@ public class Annotations {
         String currentUrl=driver.getCurrentUrl();
         Assert.assertEquals(currentUrl,"testURL");
     }
+
+    /**AfterMethod: This will be executed after every @test annotated method.
+     **/
     @AfterMethod
     public void screenShot(){
         TakesScreenshot ss = ((TakesScreenshot)driver);
         File file = ss.getScreenshotAs(OutputType.FILE);
     }
+
+    /**AfterClass: This will be executed after all test methods in the current class have been run*/
     @AfterClass
     public void close(){
         driver.close();
@@ -72,10 +89,16 @@ public class Annotations {
        /* System.out.println("@AfterClass has started.");
         driver.quit();*/
     }
+
+    /**AfterTest: A method with this annotation will be executed when all @Test annotated
+     * methods complete the execution of those classes inside the <test> tag in the TestNG.xml file.
+     **/
     @AfterTest
     public void reportReady(){
         System.out.println("Report is ready to be shared...");
     }
+
+    /**AfterSuite: A method with this annotation will run once after the execution of all tests in the suite is complete.*/
     @AfterSuite
     public void cleanup(){
         System.out.println("All close up activities are completed...");
